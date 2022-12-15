@@ -1,7 +1,7 @@
-import Axios from 'axios';
+import Axios from "axios";
 // import { router } from '@/router';
 
-const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/' : '//localhost:3030/api/';
+const BASE_URL = "http://localhost:3030/api/";
 
 var axios = Axios.create({
   withCredentials: true,
@@ -9,36 +9,33 @@ var axios = Axios.create({
 
 export const httpService = {
   get(endpoint, data) {
-    return ajax(endpoint, 'GET', data);
+    return ajax(endpoint, "GET", data);
   },
   post(endpoint, data) {
-    return ajax(endpoint, 'POST', data);
+    return ajax(endpoint, "POST", data);
   },
   put(endpoint, data) {
-    return ajax(endpoint, 'PUT', data);
+    return ajax(endpoint, "PUT", data);
   },
   delete(endpoint, data) {
-    return ajax(endpoint, 'DELETE', data);
+    return ajax(endpoint, "DELETE", data);
   },
 };
 
-async function ajax(endpoint, method = 'GET', data = null) {
+async function ajax(endpoint, method = "GET", data = null) {
+  let url = `${BASE_URL}${endpoint}`;
+  if (endpoint.includes("board")) {
+    url = `https://dev.halsell.com/api/modules/board`;
+  }
   try {
     const res = await axios({
-      url: `${BASE_URL}${endpoint}`,
+      url: url,
       method,
       data,
-      params: method === 'GET' ? data : null,
+      params: method === "GET" ? data : null,
     });
     return res.data;
   } catch (err) {
     console.dir(err);
-    if (err.response && err.response.status === 401) {
-      // Depends on routing startegy - hash or history
-      // window.location.assign('/#/login')
-      // window.location.assign('/login')
-      // this.$router.push('/login');
-    }
-    throw err;
   }
 }

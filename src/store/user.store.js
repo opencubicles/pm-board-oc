@@ -3,7 +3,17 @@ import { userService } from "../service/user-service.js";
 export const userStore = {
   state: {
     users: null,
-    currUser: userService.getLoggedinUser(),
+    currUser: {
+      _id: "639af6c5f037b68015ad1dcf",
+      fullname: "rajat",
+      username: "rajat",
+      email: "rajatgarg91@gmail.com",
+      imgUrl: "",
+      boards: {
+        boards: ["639af73ef037b68015ad1dd0", "639b0584f037b68015ad1dd1"],
+        starBoard: [],
+      },
+    },
     cmpDyn: null,
   },
   getters: {

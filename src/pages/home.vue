@@ -52,6 +52,7 @@
       };
     },
     created() {
+      this.$router.push(`/:oc/boards`);
       this.$store.dispatch({ type: 'updateStyleHeader', color: null });
     },
     methods: {

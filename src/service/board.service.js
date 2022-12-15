@@ -138,15 +138,21 @@ async function getBoardsForDisplay(userLog) {
       return acc;
     }, []);
     var boardsUser = userLog.boards.boards.reduce((acc, boardId) => {
-      const board = boards.find((board) => board._id === boardId);
-      if (board) {
+      // const board = boards.find((board) => board._id === boardId);
+      // console.log(boards);
+      // console.log(boardId);
+      boards.map((e) => {
+        const existingBoard = acc.findIndex((x) => x._id === e._id);
+        if (existingBoard > -1) return;
         acc.push({
-          _id: board._id,
-          title: board.title,
-          style: board.style,
-          members: board.members,
+          _id: e._id,
+          title: e.title,
+          style: e.style,
+          members: e.members,
         });
-      }
+      });
+      // if (board) {
+      // }
       return acc;
     }, []);
     return Promise.resolve({ boards: boardsUser, boardsStar });
