@@ -25,7 +25,9 @@ export const httpService = {
 async function ajax(endpoint, method = "GET", data = null) {
   let url = `${BASE_URL}${endpoint}`;
   if (endpoint.includes("board")) {
-    url = `https://dev.halsell.com/api/modules/board`;
+    url = `https://dev.halsell.com/api/modules/${endpoint}`;
+  } else if (endpoint.includes("board/")) {
+    url = `https://dev.halsell.com/api/modules/${endpoint}`;
   }
   try {
     const res = await axios({

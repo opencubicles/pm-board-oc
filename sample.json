@@ -1,0 +1,178 @@
+{
+  "_id": 1,
+  "title": "Test Board",
+  "description": "",
+  "createdAt": "2022-12-13T13:37:16.000000Z",
+  "createdBy": {
+    "_id": 1,
+    "fullname": "rajat",
+    "username": "rajat",
+    "email": "rajatgarg91@gmail.com",
+    "imgUrl": "",
+    "boards": []
+  },
+  "style": {
+    "backgroundImage": "url(https://images.unsplash.com/photo-1477346611705-65d1883cee1e?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyNzk3MjJ8MHwxfHNlYXJjaHwxfHxXYWxscGFwZXJzfGVufDB8MHx8fDE2Mzg3ODM4NTg&ixlib=rb-1.2.1&q=85)"
+  },
+  "color": "#260c26",
+  "styleCustom": [],
+  "members": {
+    "_id": 1,
+    "fullname": "rajat",
+    "username": "rajat",
+    "email": "rajatgarg91@gmail.com",
+    "imgUrl": "",
+    "boards": []
+  },
+  "activities": [],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Group 1",
+      "style": [],
+      "cards": [
+        {
+          "title": "new",
+          "description": "Group1 Card1",
+          "attachment": [],
+          "checklists": [],
+          "comments": [],
+          "members": [],
+          "labelIds": { "lId": "l105", "isDone": false },
+          "dueDate": [],
+          "createdAt": null,
+          "byMember": null,
+          "style": [],
+          "id": 1
+        },
+        {
+          "title": "Card2",
+          "description": "Group1 Card2",
+          "attachment": [],
+          "checklists": [],
+          "comments": [],
+          "members": [],
+          "labelIds": { "lId": "l105", "isDone": false },
+          "dueDate": [],
+          "createdAt": null,
+          "byMember": null,
+          "style": [],
+          "id": 2
+        },
+        {
+          "title": "Card3",
+          "description": "Group1 Card3",
+          "attachment": [],
+          "checklists": [],
+          "comments": [],
+          "members": [],
+          "labelIds": { "lId": "l105", "isDone": false },
+          "dueDate": [],
+          "createdAt": null,
+          "byMember": null,
+          "style": [],
+          "id": 3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Group 2",
+      "style": [],
+      "cards": [
+        {
+          "title": "Card1",
+          "description": "Group2 Card1",
+          "attachment": [],
+          "checklists": [],
+          "comments": [],
+          "members": [],
+          "labelIds": { "lId": "l105", "isDone": false },
+          "dueDate": [],
+          "createdAt": null,
+          "byMember": null,
+          "style": [],
+          "id": 4
+        },
+        {
+          "title": "Card2",
+          "description": "Group2 Card2",
+          "attachment": [],
+          "checklists": [],
+          "comments": [],
+          "members": [],
+          "labelIds": { "lId": "l105", "isDone": false },
+          "dueDate": [],
+          "createdAt": null,
+          "byMember": null,
+          "style": [],
+          "id": 5
+        },
+        {
+          "title": "Card3",
+          "description": "Group2 Card3",
+          "attachment": [],
+          "checklists": [],
+          "comments": [],
+          "members": [],
+          "labelIds": { "lId": "l105", "isDone": false },
+          "dueDate": [],
+          "createdAt": null,
+          "byMember": null,
+          "style": [],
+          "id": 6
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Group 3",
+      "style": [],
+      "cards": [
+        {
+          "title": "Card1",
+          "description": "Group3 Card1",
+          "attachment": [],
+          "checklists": [],
+          "comments": [],
+          "members": [],
+          "labelIds": { "lId": "l105", "isDone": false },
+          "dueDate": [],
+          "createdAt": null,
+          "byMember": null,
+          "style": [],
+          "id": 7
+        },
+        {
+          "title": "Card2",
+          "description": "Group3 Card2",
+          "attachment": [],
+          "checklists": [],
+          "comments": [],
+          "members": [],
+          "labelIds": { "lId": "l105", "isDone": false },
+          "dueDate": [],
+          "createdAt": null,
+          "byMember": null,
+          "style": [],
+          "id": 8
+        },
+        {
+          "title": "Card3",
+          "description": "Group3 Card3",
+          "attachment": [],
+          "checklists": [],
+          "comments": [],
+          "members": [],
+          "labelIds": { "lId": "l105", "isDone": false },
+          "dueDate": [],
+          "createdAt": null,
+          "byMember": null,
+          "style": [],
+          "id": 9
+        }
+      ]
+    }
+  ],
+  "labels": { "lId": "l105", "title": "high", "color": "#eb5a46" }
+}
