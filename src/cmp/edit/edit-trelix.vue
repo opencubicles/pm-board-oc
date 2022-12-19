@@ -2,7 +2,7 @@
   <section class="trelix">
     <header>
       <h2 v-if="header">{{ header }}</h2>
-      <a @click="closeModel" class="el-icon-close"> </a>
+      <a @click="closeModel" class="el-icon-close"> <el-icon><CloseBold /></el-icon></a>
     </header>
 
     <div class="trelix-container">

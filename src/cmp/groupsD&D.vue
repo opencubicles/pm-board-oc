@@ -28,7 +28,7 @@
 
         <el-button type="primary" @click="addGroup"> Add list</el-button>
         <!-- <font-awesome-icon icon="times" @click="toggleGroup" /> -->
-        <i class="el-icon-close" @click="toggleGroup"></i>
+        <i class="el-icon-close" @click="toggleGroup"><el-icon><CloseBold /></el-icon></i>
       </label>
     </div>
   </section>

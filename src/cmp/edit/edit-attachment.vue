@@ -3,7 +3,7 @@
     <section class="edit-attachment" v-if="!isAttTr">
       <header>
         <h2 v-if="header">{{ header }}</h2>
-        <a @click="closeModel" class="el-icon-close"> </a>
+        <a @click="closeModel" class="el-icon-close"> <el-icon><CloseBold /></el-icon></a>
       </header>
 
       <ul class="list">
@@ -37,7 +37,7 @@
     <section class="trelix" v-else>
       <header>
         <h2 v-if="header">{{ header }}</h2>
-        <a @click="closeModel" class="el-icon-close"> </a>
+        <a @click="closeModel" class="el-icon-close"><el-icon><CloseBold /></el-icon> </a>
       </header>
 
       <div class="trelix-container">

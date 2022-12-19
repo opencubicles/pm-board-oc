@@ -3,7 +3,7 @@
     <section class="edit-cover" @click.stop v-if="!isEdit">
       <header>
         <h2>{{ header }}</h2>
-        <a @click="closeModel" class="el-icon-close"> </a>
+        <a @click="closeModel" class="el-icon-close"><el-icon><CloseBold /></el-icon> </a>
       </header>
 
       <div class="size">
@@ -110,7 +110,7 @@
     <section class="edit-cover-search" @click.stop v-else>
       <header>
         <h2>{{ header }}</h2>
-        <a @click="closeModel" class="el-icon-close"> </a>
+        <a @click="closeModel" class="el-icon-close"> <el-icon><CloseBold /></el-icon></a>
       </header>
       <input type="text" placeholder="Search Unsplash for photos" v-model="search" @input="searchByEdit" />
 

@@ -2,7 +2,7 @@
   <section class="edit-cover-search" @click.stop>
     <header>
       <h2>{{ header }}</h2>
-      <a @click="closeModel" class="el-icon-close"> </a>
+      <a @click="closeModel" class="el-icon-close"><el-icon><CloseBold /></el-icon> </a>
     </header>
     <input type="text" placeholder="Search Unsplash for photos" v-model="search" />
 

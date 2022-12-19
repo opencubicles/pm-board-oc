@@ -167,7 +167,7 @@
         <i
           class="el-icon-close pointer"
           @click="isShowProfile = !isShowProfile"
-        ></i>
+        ><el-icon><CloseBold /></el-icon></i>
       </div>
 
       <div class="user-details">

@@ -62,7 +62,7 @@
         <i
           class="el-icon-close pointer"
           @click="isShowProfile = !isShowProfile"
-        ></i>
+        ><el-icon><CloseBold /></el-icon></i>
         <i>Account</i>
       </div>
       <hr />
@@ -90,7 +90,7 @@
 
     <div class="modal menu" v-if="isOpenMenu">
       <div class="title">
-        <i class="el-icon-close pointer" @click="openMenu"></i>
+        <i class="el-icon-close pointer" @click="openMenu"><el-icon><CloseBold /></el-icon></i>
         <i>More from Atlassian</i>
       </div>
       <hr />
@@ -106,7 +106,7 @@
 
     <div class="modal menu" v-if="isRecent">
       <div class="title">
-        <i class="el-icon-close pointer" @click="openRecentBoards"></i>
+        <i class="el-icon-close pointer" @click="openRecentBoards"><el-icon><CloseBold /></el-icon></i>
         <i>Recent boards</i>
       </div>
       <hr />
@@ -135,7 +135,7 @@
 
     <div class="modal menu" v-if="isStared">
       <div class="title">
-        <i class="el-icon-close pointer" @click="openStarredBoards"></i>
+        <i class="el-icon-close pointer" @click="openStarredBoards"><el-icon><CloseBold /></el-icon></i>
         <i>Starred boards</i>
       </div>
       <hr />
@@ -165,7 +165,7 @@
 
     <div class="modal menu" v-if="isTemplate">
       <div class="title">
-        <i class="el-icon-close pointer" @click="openTemplatesBoards"></i>
+        <i class="el-icon-close pointer" @click="openTemplatesBoards"><el-icon><CloseBold /></el-icon></i>
         <i>Templates</i>
       </div>
       <hr />

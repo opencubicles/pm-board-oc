@@ -54,6 +54,7 @@
               Save</a
             >
             <a class="back-btn close-btn el-icon-close" @click="closeDetails">
+              <el-icon><CloseBold /></el-icon>
             </a>
           </div>
           <div v-else class="cmm-btn">

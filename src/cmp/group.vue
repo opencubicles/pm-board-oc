@@ -116,7 +116,7 @@
     <section class="add-member" @click.stop v-if="isOpenMember">
       <header>
         <!-- <h2>Members</h2> -->
-        <a @click="openMember" class="el-icon-close"> </a>
+        <a @click="openMember" class="el-icon-close"> <el-icon><CloseBold /></el-icon></a>
       </header>
 
       <h3 class="member-title">Board members</h3>

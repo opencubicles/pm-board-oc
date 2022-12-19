@@ -2,7 +2,7 @@
   <section class="add-label" @click.stop>
     <header>
       <h2>{{ header }}</h2>
-      <a @click="closeModel" class="el-icon-close" v-show="!inMenu"> </a>
+      <a @click="closeModel" class="el-icon-close" v-show="!inMenu"> <el-icon><CloseBold /></el-icon></a>
     </header>
     <span class="backIcon material-icons-outlined" @click="backLabel" v-show="!inMenu"> chevron_left </span>
     <h3 class="labels-name">Name</h3>

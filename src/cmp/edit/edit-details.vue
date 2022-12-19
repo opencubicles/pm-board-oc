@@ -2,7 +2,7 @@
   <section class="edit-details">
     <header>
       <h2>{{ title }}</h2>
-      <a @click="closeModel" class="el-icon-close"> </a>
+      <a @click="closeModel" class="el-icon-close"><el-icon><CloseBold /></el-icon> </a>
     </header>
     <h3>{{ cmp.txt }}</h3>
     <input type="text" v-model="updateTxt" />

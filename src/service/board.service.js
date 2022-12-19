@@ -264,7 +264,7 @@ async function getGroupByCardId(boardId, cardId) {
   try {
     let board = await query();
 
-    board = board.find((board) => board._id === boardId);
+    board = board.find((board) => board._id === parseInt(boardId));
     let group = board.groups.find((group) => {
       return group.cards.some((c) => c.id === cardId);
     });

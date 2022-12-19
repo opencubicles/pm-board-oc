@@ -2,7 +2,7 @@
   <section class="edit-dueDate">
     <header>
       <h2>{{ header }}</h2>
-      <a @click="closeModel" class="el-icon-close"> </a>
+      <a @click="closeModel" class="el-icon-close"><el-icon><CloseBold /></el-icon> </a>
     </header>
     <div class="dueDate-container">
       <date-picker

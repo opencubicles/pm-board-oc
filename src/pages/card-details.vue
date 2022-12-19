@@ -7,7 +7,7 @@
         :style="bgColor"
       >
         <span class="cover-back-btn" @click="closeDetails">
-          <a class="back-btn close-btn el-icon-close"> </a>
+          <a class="back-btn close-btn el-icon-close"><el-icon><CloseBold /></el-icon> </a>
         </span>
         <a class="cover-btn" @click="dynamicCmp('cover', null, null, $event)">
           <span class="cover-icon">
@@ -22,6 +22,7 @@
           class="back-btn close-btn el-icon-close"
           @click="closeDetails"
         >
+        <el-icon><CloseBold /></el-icon>
         </a>
         <div class="secund-header">
           <!-- <font-awesome-icon class="svg" :icon="['fab', 'trello']" /> -->
@@ -154,8 +155,8 @@
                   <a
                     class="close-btn el-icon-close"
                     @click="closeDescription"
-                  ></a>
-
+                  >
+                  <el-icon><CloseBold /></el-icon></a>
                   <a class="save" @click="saveDescription">Save</a>
                 </div>
               </div>

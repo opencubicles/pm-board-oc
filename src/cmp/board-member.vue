@@ -3,7 +3,7 @@
     <section class="edit-member" @click.stop>
       <header>
         <h3>Invite to board</h3>
-        <a @click="closeModel" class="el-icon-close pointer"> </a>
+        <a @click="closeModel" class="el-icon-close pointer"><el-icon><CloseBold /></el-icon> </a>
       </header>
 
       <!-- <input class="search" type="text" placeholder="Search members" v-model="filterMember" /> -->

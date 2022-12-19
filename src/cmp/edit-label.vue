@@ -3,7 +3,8 @@
     <section class="edit-label" @click.stop :style="getStyle" v-if="!isEdit">
       <header>
         <h2>{{ header }}</h2>
-        <a @click="closeModel" class="el-icon-close" v-show="!inMenu"> </a>
+        <a @click="closeModel" class="el-icon-close" v-show="!inMenu"> 
+          <el-icon><CloseBold /></el-icon> </a>
       </header>
 
       <input class="search" type="text" placeholder="Search labels..." v-model="filterLabels" />
@@ -34,12 +35,13 @@
           <span class="material-icons-outlined icon" @click.stop="editLabel(label)"> edit </span>
         </li>
       </ul>
-      <a class="add-label" @click.stop="addLabel($event)"> Create a new label</a>
+      <a class="add-label" @click="addLabel($event)"> Create a new label</a>
+      <a class="add-label" @click="closeModel">Close</a>
     </section>
     <section class="add-label" @click.stop v-else>
       <header>
         <h2>{{ header }}</h2>
-        <a @click="closeModel" class="el-icon-close" v-show="!inMenu"> </a>
+        <a @click="closeModel" class="el-icon-close" v-show="!inMenu"> <el-icon><CloseBold /></el-icon></a>
       </header>
       <span class="backIcon material-icons-outlined" @click="backLabel" v-show="!inMenu"> chevron_left </span>
       <h3 class="labels-name">Name</h3>

@@ -52,7 +52,7 @@
           >
           </el-input>
           <div class="description-edit-btn">
-            <a class="close-btn el-icon-close" @click="closeDescription"></a>
+            <a class="close-btn el-icon-close" @click="closeDescription"><el-icon><CloseBold /></el-icon></a>
             <a class="save" @click="saveDescription">Save</a>
           </div>
         </div>

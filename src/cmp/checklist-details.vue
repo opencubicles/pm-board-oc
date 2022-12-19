@@ -22,7 +22,7 @@
         <input class="description-edit-input" type="textarea" ref="editInputTitle" v-model="copyList.title" />
 
         <div class="description-edit-btn">
-          <a class="close-btn el-icon-close" @click="editTitle"></a>
+          <a class="close-btn el-icon-close" @click="editTitle"><el-icon><CloseBold /></el-icon></a>
 
           <a class="save" @click="saveTitle">Save</a>
         </div>
@@ -47,7 +47,7 @@
             <input type="textarea" v-model="editTodo" ref="editInputTodo" />
             <span class="btn-container">
               <a class="save" @click.stop="updateTodo">Add</a>
-              <span class="back-btn close-btn el-icon-close" @click.stop="closeEditContainer"></span>
+              <span class="back-btn close-btn el-icon-close" @click.stop="closeEditContainer"><el-icon><CloseBold /></el-icon></span>
               <span class="more-btn">
                 <span class="el-icon-more"></span>
               </span>
@@ -63,7 +63,7 @@
       <form v-else @submit.prevent="addNewTodo">
         <input type="textarea" placeholder="Add an item" v-model="newTodo.txt" ref="editInputNew" />
         <a class="add" @click="addNewTodo">Add</a>
-        <span @click="closeTodoAdd" class="back-btn close-btn el-icon-close"></span>
+        <span @click="closeTodoAdd" class="back-btn close-btn el-icon-close"><el-icon><CloseBold /></el-icon></span>
       </form>
     </div>
   </article>
