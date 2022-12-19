@@ -56,8 +56,7 @@ async function addBoard(newBoard, userConnect) {
     newBoard.members.push(copyUser);
 
     let currBoard = await httpService.post(`board`, newBoard);
-    console.log("currBoard", currBoard);
-    currBoard = currBoard.ops[0];
+    // currBoard = currBoard.ops[0];
     let currNewBoard = await addActivity("add Board", currBoard, copyUser, {
       id: currBoard._id,
       title: currBoard.title,

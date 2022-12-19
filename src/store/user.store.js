@@ -10,7 +10,7 @@ export const userStore = {
       email: "rajatgarg91@gmail.com",
       imgUrl: "",
       boards: {
-        boards: ["639af73ef037b68015ad1dd0", "639b0584f037b68015ad1dd1"],
+        boards: [],
         starBoard: [],
       },
     },
@@ -21,7 +21,17 @@ export const userStore = {
       return state.users;
     },
     getUserConnect(state) {
-      return state.currUser;
+      return {
+        _id: "639af6c5f037b68015ad1dcf",
+        fullname: "rajat",
+        username: "rajat",
+        email: "rajatgarg91@gmail.com",
+        imgUrl: "",
+        boards: {
+          boards: [1],
+          starBoard: [],
+        },
+      };
     },
     cmpDyn(state) {
       return state.cmpDyn;

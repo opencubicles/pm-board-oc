@@ -111,6 +111,8 @@ export const boardStore = {
       try {
         const board = JSON.parse(JSON.stringify(getters.getBoard));
         let updateBoard = await boardService.addCard(board, groupId, newCard);
+        commit({ type: "setBoard", board: updateBoard });
+
         socketService.emit("update", updateBoard);
         return updateBoard;
       } catch (err) {
