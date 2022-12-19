@@ -124,7 +124,7 @@ export const boardStore = {
       const board = getters.getBoard;
       try {
         const updateBoard = await boardService.updateCard(board, card);
-        // commit({ type: 'setCard', card });
+        commit({ type: "setCard", card });
 
         socketService.emit("updateCard", card);
         socketService.emit("update", updateBoard);
@@ -188,8 +188,8 @@ export const boardStore = {
       try {
         const board = getters.getBoard;
         var savedBoard = await boardService.addGroup(board, newGroup);
-        socketService.emit("update", savedBoard);
-        // commit({ type: 'setBoard', board: savedBoard });
+        // socketService.emit("update", savedBoard);
+        commit({ type: "setBoard", board: savedBoard });
         return savedBoard;
       } catch (err) {
         console.log(err);

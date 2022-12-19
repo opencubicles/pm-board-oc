@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import "./assets/style/styles.scss";
-import "./registerServiceWorker";
+// import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 import Element from "element-plus";
