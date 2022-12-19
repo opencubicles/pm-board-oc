@@ -276,8 +276,10 @@ async function getGroupByCardId(boardId, cardId) {
 async function getLabelByCard(boardId, card) {
   try {
     let board = await query();
+    console.log("board", board);
 
-    board = board.find((board) => board._id === boardId);
+    board = board.find((board) => board._id === parseInt(boardId));
+
     let carrLabels = [];
     board.labels.forEach((label) => {
       if (
