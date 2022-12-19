@@ -102,9 +102,9 @@
                 class="icon-checklist icon check"
               ></span>
               <span v-if="!showCheck" class="icon icon-clock check"></span>
-              <!-- <span v-if="card.dueDate.date.date">
-                {{ card.dueDate.date.date | moment("MMM DD") }}</span
-              > -->
+              <span v-if="card.dueDate.date.date">
+                {{ formatDate(card.dueDate.date.date, "MMM DD") }}
+              </span>
             </div>
 
             <!-- description -->
@@ -164,10 +164,9 @@
     </section>
     <div class="modal" v-if="isShowProfile">
       <div class="title">
-        <i
-          class="el-icon-close pointer"
-          @click="isShowProfile = !isShowProfile"
-        ><el-icon><CloseBold /></el-icon></i>
+        <i class="el-icon-close pointer" @click="isShowProfile = !isShowProfile"
+          ><el-icon><CloseBold /></el-icon
+        ></i>
       </div>
 
       <div class="user-details">
@@ -236,6 +235,9 @@ export default {
     }
   },
   methods: {
+    formatDate(date, format) {
+      return moment(date).format(format);
+    },
     async updateCard(card) {
       try {
         await this.$store.dispatch({

@@ -7,7 +7,9 @@
         :style="bgColor"
       >
         <span class="cover-back-btn" @click="closeDetails">
-          <a class="back-btn close-btn el-icon-close"><el-icon><CloseBold /></el-icon> </a>
+          <a class="back-btn close-btn el-icon-close"
+            ><el-icon><CloseBold /></el-icon>
+          </a>
         </span>
         <a class="cover-btn" @click="dynamicCmp('cover', null, null, $event)">
           <span class="cover-icon">
@@ -22,7 +24,7 @@
           class="back-btn close-btn el-icon-close"
           @click="closeDetails"
         >
-        <el-icon><CloseBold /></el-icon>
+          <el-icon><CloseBold /></el-icon>
         </a>
         <div class="secund-header">
           <!-- <font-awesome-icon class="svg" :icon="['fab', 'trello']" /> -->
@@ -102,11 +104,10 @@
                   @click="dynamicCmp('dueDate', null, null, $event)"
                   class="date-dedline-container"
                 >
-                  <!-- {{ card.dueDate.date | moment('MMM ') }} -->
-                  <!-- {{ dueDateDay.date }} -->
+                  {{ dueDateDay.date }}
                   {{ dueDateTime }}
                   at
-                  <!-- {{ card.dueDate.date.time | moment(" h:mm A") }} -->
+                  {{ card.dueDate.date.time }}
                   <span v-if="card.dueDate.isComplete" class="complete"
                     >complete</span
                   >
@@ -152,11 +153,9 @@
                 </el-input>
 
                 <div class="description-edit-btn">
-                  <a
-                    class="close-btn el-icon-close"
-                    @click="closeDescription"
-                  >
-                  <el-icon><CloseBold /></el-icon></a>
+                  <a class="close-btn el-icon-close" @click="closeDescription">
+                    <el-icon><CloseBold /></el-icon
+                  ></a>
                   <a class="save" @click="saveDescription">Save</a>
                 </div>
               </div>
@@ -357,9 +356,9 @@
                     <span class="title-option">
                       <span
                         >Added
-                        <!-- {{ att.upAt | moment("from") }} -->
-                        <span v-if="dayLeft(att.upAt)"
-                          >at{{ getTime(att.upAt) }}</span
+                        {{ formatFrom(att.upAt) }}
+                        <span v-if="dayLeft(att.upAt)">
+                          at {{ getTime(att.upAt) }}</span
                         >
                         <span> - </span>
                       </span>
@@ -527,6 +526,13 @@ export default {
     };
   },
   methods: {
+    formatDate(date, format) {
+      console.log(date);
+      return moment(date).format(format);
+    },
+    formatFrom(date) {
+      return moment().from(date);
+    },
     openAttachUrl(url) {
       window.open(url, "_blank");
     },
