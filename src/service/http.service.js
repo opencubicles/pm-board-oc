@@ -22,7 +22,7 @@ export const httpService = {
 async function ajax(endpoint, method = "GET", data = null) {
   try {
     const res = await axios({
-      url: `${import.meta.env.VITE_BASE_URL}${endpoint}`,
+      url: `${import.meta.env.VITE_API_URL}${endpoint}`,
       method,
       data,
       params: method === "GET" ? data : null,
