@@ -21,23 +21,22 @@
 
     <div class="add-list">
       <div class="add-list-new" @click="toggleGroup" v-if="!isAddGroup">
-        <span class="icon-add"> </span>
+        <i class="bi bi-plus"> </i>
         <span class="txt-add"> Add a list </span>
       </div>
       <div class="add-list-container" v-if="isAddGroup">
         <label>
-          <el-input
+          <input
+            class="form-control"
+            @keyup.enter.native="addGroup"
             placeholder="Enter list title..."
             v-model="newGroup.title"
-            @keyup.enter.native="addGroup"
-          ></el-input>
+          />
           <div class="btn-add">
-            <el-button type="primary" class="btn" @click="addGroup">
-              Add list</el-button
-            >
-            <span class="material-icons-outlined grey" @click="toggleGroup"
-              >close</span
-            >
+            <button type="button" class="btn btn-primary" @click="addGroup">
+              Add list
+            </button>
+            <i class="bi bi-x grey" @click="toggleGroup"></i>
           </div>
         </label>
       </div>

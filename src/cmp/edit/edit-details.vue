@@ -2,7 +2,7 @@
   <section class="edit-details">
     <header>
       <h2>{{ title }}</h2>
-      <a @click="closeModel" class="el-icon-close"><el-icon><CloseBold /></el-icon> </a>
+      <a @click="closeModel" class="el-icon-close"><i class="bi bi-x"></i> </a>
     </header>
     <h3>{{ cmp.txt }}</h3>
     <input type="text" v-model="updateTxt" />
@@ -23,15 +23,15 @@ export default {
   },
   data() {
     return {
-      updateTxt: '',
+      updateTxt: "",
     };
   },
   methods: {
     update() {
-      this.$emit('update', this.updateTxt);
+      this.$emit("update", this.updateTxt);
     },
     closeModel() {
-      this.$emit('closeModel');
+      this.$emit("closeModel");
     },
   },
 };

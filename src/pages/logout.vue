@@ -15,13 +15,13 @@
                         <p class="profile">
                             <section class="avatar-container">
                                 <div class="avatar-icon">
-                                     <!-- <avatar
+                                     <avatar
               v-if="userToLogout.imgUrl"
               :src="userToLogout.imgUrl"
               :size="72"
-              :username="userToLogout.fullname"
+              :name="userToLogout.fullname"
               
-            ></avatar> -->
+            ></avatar>
             <avatar
               
               :size="72"
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import avatar from "vue-avatar";
+import avatar from "vue3-avatar";
 export default {
   name: "logout",
   data() {

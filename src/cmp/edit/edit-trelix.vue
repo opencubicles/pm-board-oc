@@ -2,20 +2,28 @@
   <section class="trelix">
     <header>
       <h2 v-if="header">{{ header }}</h2>
-      <a @click="closeModel" class="el-icon-close"> <el-icon><CloseBold /></el-icon></a>
+      <a @click="closeModel" class="el-icon-close"> <i class="bi bi-x"></i></a>
     </header>
 
     <div class="trelix-container">
       <div class="tr-search">
         Card or board to add:
-        <input class="tr-search-input" placeholder="Search terms or URL..." v-model="url" />
+        <input
+          class="tr-search-input"
+          placeholder="Search terms or URL..."
+          v-model="url"
+        />
       </div>
 
       <div class="tr-cards" v-if="boards">
         <h3>Cards:</h3>
         <!-- v-for="group in boards.groups" :key="group.id" -->
         <ul v-for="group in boards.groups" :key="group.id">
-          <li v-for="card in group.cards" :key="card.id" @click="addAttTr(card.id)">
+          <li
+            v-for="card in group.cards"
+            :key="card.id"
+            @click="addAttTr(card.id)"
+          >
             <span>{{ card.title }}</span>
             <span>in {{ boards.title }}</span>
           </li>
@@ -34,7 +42,7 @@
 
 <script>
 export default {
-  name: 'trelix',
+  name: "trelix",
   props: {
     cmp: {
       type: Object,
@@ -51,23 +59,23 @@ export default {
   },
   data() {
     return {
-      url: '',
+      url: "",
       filterTr: null,
     };
   },
   created() {},
   methods: {
     closeModel() {
-      this.$emit('closeModel');
+      this.$emit("closeModel");
     },
     filter() {
       if (this.filterTr) {
-        const regex = new RegExp(this.filterLabels, 'i');
+        const regex = new RegExp(this.filterLabels, "i");
         labelToShow = labelToShow.filter((label) => regex.test(label.title));
       }
     },
     addAttTr(cardId) {
-      this.$emit('addAttTr', cardId);
+      this.$emit("addAttTr", cardId);
       //   this.$emit('closeModel');
     },
   },

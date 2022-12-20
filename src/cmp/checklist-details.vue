@@ -8,21 +8,33 @@
         </h3>
         <div class="todos-btn" v-if="checklist">
           <span v-if="countTodosDone">
-            <a v-show="longSow" class="checked-item" @click="toggleCheckedItem">Hide checked items</a>
+            <a v-show="longSow" class="checked-item" @click="toggleCheckedItem"
+              >Hide checked items</a
+            >
             <a v-show="!longSow" class="checked-item" @click="toggleCheckedItem"
               >Show checked items({{ countTodosDone }})</a
             >
           </span>
 
-          <a class="delete-checklist" @click="deleteChecklist($event)" ref="checklistDeleteEl">Delete</a>
+          <a
+            class="delete-checklist"
+            @click="deleteChecklist($event)"
+            ref="checklistDeleteEl"
+            >Delete</a
+          >
         </div>
       </div>
 
       <div v-else class="description-edit">
-        <input class="description-edit-input" type="textarea" ref="editInputTitle" v-model="copyList.title" />
+        <input
+          class="description-edit-input"
+          type="textarea"
+          ref="editInputTitle"
+          v-model="copyList.title"
+        />
 
         <div class="description-edit-btn">
-          <a class="close-btn el-icon-close" @click="editTitle"><el-icon><CloseBold /></el-icon></a>
+          <a class="close-btn bi bi-x" @click="editTitle"></a>
 
           <a class="save" @click="saveTitle">Save</a>
         </div>
@@ -36,7 +48,12 @@
 
     <ul class="todos-container">
       <li class="todos" v-for="todo in todosToShow" :key="todo.id">
-        <el-checkbox @change="updateStatistic(todo.id)" class="checkbox" v-model="todo.isDone"> </el-checkbox>
+        <el-checkbox
+          @change="updateStatistic(todo.id)"
+          class="checkbox"
+          v-model="todo.isDone"
+        >
+        </el-checkbox>
 
         <div class="todo-row" @click="editCurrentTodo(todo.id)">
           <div v-show="todo.id !== editTodoTxt" class="checklist-todo">
@@ -47,7 +64,11 @@
             <input type="textarea" v-model="editTodo" ref="editInputTodo" />
             <span class="btn-container">
               <a class="save" @click.stop="updateTodo">Add</a>
-              <span class="back-btn close-btn el-icon-close" @click.stop="closeEditContainer"><el-icon><CloseBold /></el-icon></span>
+              <span
+                class="back-btn close-btn el-icon-close"
+                @click.stop="closeEditContainer"
+                ><i class="bi bi-x"></i
+              ></span>
               <span class="more-btn">
                 <span class="el-icon-more"></span>
               </span>
@@ -61,19 +82,24 @@
       <a v-if="!editTodoMode" class="item-btn" @click="addTodo">Add an item</a>
 
       <form v-else @submit.prevent="addNewTodo">
-        <input type="textarea" placeholder="Add an item" v-model="newTodo.txt" ref="editInputNew" />
+        <input
+          type="textarea"
+          placeholder="Add an item"
+          v-model="newTodo.txt"
+          ref="editInputNew"
+        />
         <a class="add" @click="addNewTodo">Add</a>
-        <span @click="closeTodoAdd" class="back-btn close-btn el-icon-close"><el-icon><CloseBold /></el-icon></span>
+        <span @click="closeTodoAdd" class="back-btn close-btn bi bi-x"></span>
       </form>
     </div>
   </article>
 </template>
 
 <script>
-import { utilService } from '../service/util.service.js';
-import { boardService } from '../service/board.service.js';
+import { utilService } from "../service/util.service.js";
+import { boardService } from "../service/board.service.js";
 export default {
-  name: 'checklistDetails',
+  name: "checklistDetails",
   props: {
     checklist: {
       type: Object,
@@ -82,7 +108,7 @@ export default {
   },
   data() {
     return {
-      newTodo: { txt: '', isDone: false },
+      newTodo: { txt: "", isDone: false },
       editTitleMode: false,
       copyList: null,
       longSow: true,
@@ -90,7 +116,7 @@ export default {
 
       updateTodoMode: null,
       editTodo: null,
-      editTodoTxt: '',
+      editTodoTxt: "",
     };
   },
   created() {
@@ -100,25 +126,29 @@ export default {
     editCurrentTodo(todoId) {
       this.editTodoMode = false;
       this.editTodoTxt = todoId;
-      this.updateTodoMode = this.copyList.todos.find((todo) => (todo.id === todoId ? todo : null));
+      this.updateTodoMode = this.copyList.todos.find((todo) =>
+        todo.id === todoId ? todo : null
+      );
       this.editTodo = this.updateTodoMode.txt;
     },
 
     updateTodo() {
-      let todoIdx = this.copyList.todos.findIndex((t) => t.id === this.updateTodoMode.id);
+      let todoIdx = this.copyList.todos.findIndex(
+        (t) => t.id === this.updateTodoMode.id
+      );
       this.updateTodoMode.txt = this.editTodo;
       this.copyList.todos.splice(todoIdx, 1, this.updateTodoMode);
-      this.editTodoTxt = '';
+      this.editTodoTxt = "";
       this.saveChecklist();
     },
 
     closeEditContainer() {
-      this.editTodoTxt = '';
+      this.editTodoTxt = "";
     },
 
     addTodo() {
       this.editTodoMode = true;
-      this.editTodoTxt = '';
+      this.editTodoTxt = "";
     },
     closeTodoAdd() {
       this.editTodoMode = false;
@@ -127,12 +157,12 @@ export default {
       this.closeTodoAdd();
       this.newTodo.id = utilService.makeId();
       this.copyList.todos.push(this.newTodo);
-      this.newTodo = { txt: '', isDone: false };
+      this.newTodo = { txt: "", isDone: false };
       this.saveChecklist();
     },
 
     newTodoRest() {
-      this.newTodo = { txt: '', isDone: false };
+      this.newTodo = { txt: "", isDone: false };
     },
     saveTitle() {
       this.editTitle();
@@ -143,10 +173,10 @@ export default {
     },
 
     updateStatistic(todoId) {
-      this.$emit('updateList', this.checklist);
+      this.$emit("updateList", this.checklist);
     },
     saveChecklist() {
-      this.$emit('updateList', this.copyList);
+      this.$emit("updateList", this.copyList);
     },
     editTitle() {
       this.editTitleMode = !this.editTitleMode;
@@ -156,7 +186,7 @@ export default {
       // .getBoundingClientRect()
       let { x, y } = this.$refs.checklistDeleteEl.getBoundingClientRect();
       let pos = { x, y };
-      this.$emit('deleteChecklist', this.checklist.id, pos);
+      this.$emit("deleteChecklist", this.checklist.id, pos);
     },
   },
   computed: {
@@ -170,12 +200,12 @@ export default {
     },
     progress() {
       if (this.statistic === 100) {
-        return 'success';
-        return 'backgroundColor: #61bd4f';
+        return "success";
+        return "backgroundColor: #61bd4f";
       }
     },
     editMode() {
-      return this.editTitleMode ? '110px' : '48px';
+      return this.editTitleMode ? "110px" : "48px";
     },
     countTodosDone() {
       let list = this.checklist;

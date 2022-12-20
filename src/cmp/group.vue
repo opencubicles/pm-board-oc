@@ -2,16 +2,16 @@
   <section class="group-container">
     <div class="group">
       <header>
-        <el-input
+        <input
           ref="input"
-          class="edit-title"
-          size="mini"
-          :class="{ focus: isEditTitle }"
+          class="form-control edit-title"
           v-model="group.title"
+          placeholder="List title..."
           @keyup.enter.native="editTitle"
           @click.native="editTitle"
-        ></el-input>
-        <i class="el-icon-more" @click="openModal = !openModal"></i>
+          style="background: transparent; border: none"
+        />
+        <i class="bi bi-three-dots" @click="openModal = !openModal"></i>
       </header>
       <div class="modal" v-if="openModal">
         <div class="title">
@@ -81,8 +81,18 @@
                 v-if="newCard.members && newCard.members.length > 0"
               >
                 <div v-for="member in newCard.members" :key="member._id">
-                  <!-- <avatar v-if="member.imgUrl" :src="member.imgUrl" :size="28" class="member-img" />
-                  <avatar v-else :username="member.username" :size="28" class="member"></avatar> -->
+                  <avatar
+                    v-if="member.imgUrl"
+                    :src="member.imgUrl"
+                    :size="28"
+                    class="member-img"
+                  />
+                  <avatar
+                    v-else
+                    :name="member.username"
+                    :size="28"
+                    class="member"
+                  ></avatar>
                 </div>
               </div>
 
@@ -108,7 +118,7 @@
         v-if="!isAddCard"
       >
         <p class="add-card-btn">
-          <span class="icon-add icon add-card"> </span> Add a card
+          <span class="bi bi-plus icon"> </span> Add a card
         </p>
       </label>
     </div>
@@ -116,7 +126,7 @@
     <section class="add-member" @click.stop v-if="isOpenMember">
       <header>
         <!-- <h2>Members</h2> -->
-        <a @click="openMember" class="el-icon-close"> <el-icon><CloseBold /></el-icon></a>
+        <a @click="openMember"> <i class="bi bi-x"></i></a>
       </header>
 
       <h3 class="member-title">Board members</h3>
@@ -128,7 +138,7 @@
           @click="addMember(member)"
         >
           <div class="curr-user">
-            <!-- <avatar
+            <avatar
               v-if="member.imgUrl"
               :src="member.imgUrl"
               :size="32"
@@ -136,10 +146,10 @@
             ></avatar>
             <avatar
               v-else
-              :username="member.fullname"
+              :name="member.fullname"
               class="avatar"
               :size="32"
-            ></avatar> -->
+            ></avatar>
 
             <span class="user">
               <span>{{ member.fullname }}</span>
@@ -160,7 +170,7 @@
 <script>
 // import member from "./edit/edit-member.vue";
 import { applyDrag } from "../service/util.service.js";
-import avatar from "vue-avatar";
+import avatar from "vue3-avatar";
 import label from "./edit-label.vue";
 import { boardService } from "../service/board.service";
 import card from "./card.vue";

@@ -3,7 +3,9 @@
     <section class="edit-attachment" v-if="!isAttTr">
       <header>
         <h2 v-if="header">{{ header }}</h2>
-        <a @click="closeModel" class="el-icon-close"> <el-icon><CloseBold /></el-icon></a>
+        <a @click="closeModel" class="el-icon-close">
+          <i class="bi bi-x"></i
+        ></a>
       </header>
 
       <ul class="list">
@@ -15,14 +17,20 @@
           {{ cmp }}
         </li>
         <li>
-          <label class="attachment" @click="dynamicCmp($event)" ref="trelixEl"> Trelix </label>
+          <label class="attachment" @click="dynamicCmp($event)" ref="trelixEl">
+            Trelix
+          </label>
         </li>
       </ul>
       <hr />
 
       <form @submit.prevent="saveLink">
         <label class="link">Attach a link</label>
-        <input type="text" placeholder="Paste any link here..." v-model="att.link" />
+        <input
+          type="text"
+          placeholder="Paste any link here..."
+          v-model="att.link"
+        />
 
         <label v-if="att.link" class="optional-link"
           >Link name(optional)
@@ -37,20 +45,30 @@
     <section class="trelix" v-else>
       <header>
         <h2 v-if="header">{{ header }}</h2>
-        <a @click="closeModel" class="el-icon-close"><el-icon><CloseBold /></el-icon> </a>
+        <a @click="closeModel" class="el-icon-close"
+          ><i class="bi bi-x"></i>
+        </a>
       </header>
 
       <div class="trelix-container">
         <div class="tr-search">
           Card or board to add:
-          <input class="tr-search-input" placeholder="Search terms or URL..." v-model="url" />
+          <input
+            class="tr-search-input"
+            placeholder="Search terms or URL..."
+            v-model="url"
+          />
         </div>
         <!-- {{ cardsToShow }} -->
         <div class="tr-cards" v-if="cardsToShow">
           <h3>Cards:</h3>
           <!-- v-for="group in boards.groups" :key="group.id" -->
           <ul>
-            <li v-for="card in cardsToShow" :key="card.id" @click="addAttTr(card.card.id)">
+            <li
+              v-for="card in cardsToShow"
+              :key="card.id"
+              @click="addAttTr(card.card.id)"
+            >
               <span>{{ card.card.title }}</span>
               <span>in {{ card.group.title }}</span>
             </li>
@@ -69,10 +87,10 @@
 </template>
 
 <script>
-import { uploadImg } from '../../service/img.service.js';
+import { uploadImg } from "../../service/img.service.js";
 
 export default {
-  name: 'attachment',
+  name: "attachment",
   props: {
     cmp: {
       type: Object,
@@ -90,12 +108,12 @@ export default {
   data() {
     return {
       att: {
-        link: '',
-        name: '',
+        link: "",
+        name: "",
       },
       isLoading: false,
       isAttTr: false,
-      url: '',
+      url: "",
       filterTr: null,
     };
   },
@@ -120,30 +138,30 @@ export default {
         url: res.url,
         upAt: Date.now(),
       };
-      this.$emit('computerAttImg', attachment);
+      this.$emit("computerAttImg", attachment);
       this.isLoading = false;
     },
     saveLink() {
-      (this.att.upAt = Date.now()), this.$emit('computerAttLink', this.att);
+      (this.att.upAt = Date.now()), this.$emit("computerAttLink", this.att);
       this.att = {
-        link: '',
-        name: '',
+        link: "",
+        name: "",
       };
     },
     closeModel() {
-      this.$emit('closeModel');
+      this.$emit("closeModel");
     },
     closeModel() {
-      this.$emit('closeModel');
+      this.$emit("closeModel");
     },
     filter() {
       if (this.filterTr) {
-        const regex = new RegExp(this.filterLabels, 'i');
+        const regex = new RegExp(this.filterLabels, "i");
         labelToShow = labelToShow.filter((label) => regex.test(label.title));
       }
     },
     addAttTr(cardId) {
-      this.$emit('addAttTr', cardId);
+      this.$emit("addAttTr", cardId);
       //   this.$emit('closeModel');
     },
   },
@@ -154,7 +172,10 @@ export default {
       const cardAttTrelix = board.groups.reduce((acc, g) => {
         g.cards.forEach((c) => {
           if (c.id === this.card.id) return;
-          if (this.card.attachment.trelixAttachments.some((cId) => cId === c.id)) return;
+          if (
+            this.card.attachment.trelixAttachments.some((cId) => cId === c.id)
+          )
+            return;
           acc.push({ card: c, group: g });
         });
         return acc;

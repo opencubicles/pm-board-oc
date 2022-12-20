@@ -1,7 +1,4 @@
 import Axios from "axios";
-// import { router } from '@/router';
-
-const BASE_URL = "http://localhost:3030/api/";
 
 var axios = Axios.create({
   withCredentials: true,
@@ -23,15 +20,9 @@ export const httpService = {
 };
 
 async function ajax(endpoint, method = "GET", data = null) {
-  let url = `${BASE_URL}${endpoint}`;
-  if (endpoint.includes("board")) {
-    url = `https://dev.halsell.com/api/modules/${endpoint}`;
-  } else if (endpoint.includes("board/")) {
-    url = `https://dev.halsell.com/api/modules/${endpoint}`;
-  }
   try {
     const res = await axios({
-      url: url,
+      url: `${import.meta.env.VITE_BASE_URL}${endpoint}`,
       method,
       data,
       params: method === "GET" ? data : null,

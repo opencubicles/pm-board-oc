@@ -1,10 +1,18 @@
 <template>
   <section class="activity-log">
-    <font-awesome-icon icon="tasks" class="svg" />
     <header>
-      <span class="activity-header">
-        <h3>Activity</h3>
-      </span>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+        "
+      >
+        <i class="bi bi-list-check" style="font-size: 1.4rem; gap: 1rem"></i>
+        <h5>Activity</h5>
+      </div>
+      <span class="activity-header"> </span>
       <span class="activity-header-btn">
         <a class="show-btn" @click="showActivity">Show details</a>
       </span>
@@ -12,8 +20,13 @@
 
     <div class="activity-container">
       <form @submit.prevent="saveCommit(0)">
-        <!-- <avatar v-if="user.imgUrl" :src="user.imgUrl" :size="32" class="avatar"></avatar>
-        <avatar v-else :username="user.fullname" :size="32" class="avatar"></avatar> -->
+        <avatar
+          v-if="user.imgUrl"
+          :src="user.imgUrl"
+          :size="32"
+          class="avatar"
+        ></avatar>
+        <avatar v-else :name="user.fullname" :size="32" class="avatar"></avatar>
         <input
           type="textarea"
           :class="edit"
@@ -31,8 +44,18 @@
     <ul class="commit-list">
       <li v-for="cmm in currCommits" :key="cmm.id">
         <div class="user-avatar">
-          <!-- <avatar v-if="cmm.byMember.imgUrl" :src="cmm.byMember.imgUrl" :size="32" class="avatar"></avatar>
-          <avatar v-else :username="cmm.byMember.fullname" :size="32" class="avatar"></avatar> -->
+          <avatar
+            v-if="cmm.byMember.imgUrl"
+            :src="cmm.byMember.imgUrl"
+            :size="32"
+            class="avatar"
+          ></avatar>
+          <avatar
+            v-else
+            :name="cmm.byMember.fullname"
+            :size="32"
+            class="avatar"
+          ></avatar>
         </div>
 
         <form @submit.prevent>
@@ -54,7 +77,7 @@
               Save</a
             >
             <a class="back-btn close-btn el-icon-close" @click="closeDetails">
-              <el-icon><CloseBold /></el-icon>
+              <i class="bi bi-x"></i>
             </a>
           </div>
           <div v-else class="cmm-btn">
@@ -69,7 +92,7 @@
 </template>
 
 <script>
-import avatar from "vue-avatar";
+import avatar from "vue3-avatar";
 import moment from "moment";
 import { boardService } from "../service/board.service.js";
 import { utilService } from "../service/util.service.js";

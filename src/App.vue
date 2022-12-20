@@ -6,64 +6,76 @@
 </template>
 
 <script>
-  import appHeader from './cmp/app-header.vue';
-  import { socketService } from './service/socket.service.js';
+import appHeader from "./cmp/app-header.vue";
+import { socketService } from "./service/socket.service.js";
 
-  export default {
-    data() {
-      return {
-        loadUser: false,
-      };
+export default {
+  data() {
+    return {
+      loadUser: false,
+    };
+  },
+  created() {
+    if (this.$store.getters.getUserConnect) {
+      socketService.on(
+        `updateUser${this.$store.getters.getUserConnect._id}`,
+        this.updateUser
+      );
+    }
+  },
+  methods: {
+    updateCard(updateCard) {
+      this.$store.commit({ type: "setCard", card: updateCard });
     },
-    created() {
-      if (this.$store.getters.getUserConnect) {
-        socketService.on(`updateUser${this.$store.getters.getUserConnect._id}`, this.updateUser);
+    updateBoard(updateBoard) {
+      this.$store.commit({ type: "setBoard", board: updateBoard });
+    },
+    updateUser(user) {
+      this.$store.dispatch({ type: "logIn", user });
+    },
+    updateGroup(group) {
+      this.$store.dispatch({ type: "logIn", group });
+    },
+    // updateMouse(mouseEvents){
+    //   this.$store.commit({ type: 'updateMouse', mouseEvents });
+    // },
+  },
+  components: {
+    appHeader,
+  },
+  computed: {},
+
+  watch: {
+    "$store.getters.currCard"() {
+      if (this.$store.getters.currCard) {
+        socketService.on(
+          `updateCard${this.$store.getters.currCard.id}`,
+          this.updateCard
+        );
       }
     },
-    methods: {
-      updateCard(updateCard) {
-        this.$store.commit({ type: 'setCard', card: updateCard });
-      },
-      updateBoard(updateBoard) {
-        this.$store.commit({ type: 'setBoard', board: updateBoard });
-      },
-      updateUser(user) {
-        this.$store.dispatch({ type: 'logIn', user });
-      },
-      updateGroup(group) {
-        this.$store.dispatch({ type: 'logIn', group });
-      },
-      // updateMouse(mouseEvents){
-      //   this.$store.commit({ type: 'updateMouse', mouseEvents });
-      // },
+    "$store.getters.getBoard"() {
+      if (this.$store.getters.getBoard) {
+        socketService.on(
+          `update${this.$store.getters.getBoard._id}`,
+          this.updateBoard
+        );
+      }
     },
-    components: {
-      appHeader,
+    "$store.getters.currGroup"() {
+      if (this.$store.getters.currGroup) {
+        socketService.on(
+          `updateGroup${this.$store.getters.currGroup._id}`,
+          this.updateGroup
+        );
+      }
     },
-    computed: {},
 
-    watch: {
-      '$store.getters.currCard'() {
-        if (this.$store.getters.currCard) {
-          socketService.on(`updateCard${this.$store.getters.currCard.id}`, this.updateCard);
-        }
-      },
-      '$store.getters.getBoard'() {
-        if (this.$store.getters.getBoard) {
-          socketService.on(`update${this.$store.getters.getBoard._id}`, this.updateBoard);
-        }
-      },
-      '$store.getters.currGroup'() {
-        if (this.$store.getters.currGroup) {
-          socketService.on(`updateGroup${this.$store.getters.currGroup._id}`, this.updateGroup);
-        }
-      },
-
-      // '$store.getters.getBoard'() {
-      //   if (this.$store.getters.getBoard) {
-      //     socketService.on(`updateMouse${this.$store.getters.getBoard._id}`, this.updateMouse);
-      //   }
-      // },
-    },
-  };
+    // '$store.getters.getBoard'() {
+    //   if (this.$store.getters.getBoard) {
+    //     socketService.on(`updateMouse${this.$store.getters.getBoard._id}`, this.updateMouse);
+    //   }
+    // },
+  },
+};
 </script>

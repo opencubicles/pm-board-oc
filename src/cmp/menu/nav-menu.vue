@@ -4,13 +4,20 @@
       <li class="menu-header">
         <h3 class="back-menu" @click="changeCmp(null)"></h3>
         <h2 class="menu-header-txt">Menu</h2>
-        <h3 @click="closeMenu" class="close-menu material-icons-outlined pointer">close</h3>
+        <h3
+          @click="closeMenu"
+          class="close-menu material-icons-outlined pointer"
+        >
+          close
+        </h3>
       </li>
       <hr />
       <div class="container-main">
         <li class="menu-about" @click="changeCmp('aboutBoard')">
           <div class="logo-menu flex">
-            <div class="logo"><font-awesome-icon class="logo" :icon="['fab', 'trello']" /></div>
+            <div class="logo">
+              <font-awesome-icon class="logo" :icon="['fab', 'trello']" />
+            </div>
           </div>
           <div class="details">
             <h2>About this board</h2>
@@ -34,11 +41,17 @@
         </li>
         <div class="input-link">
           <label for="">
-            <h3>Link to this board</h3>
-            <el-input :value="getUrl" ref="input"></el-input>
+            <strong>Link to this board</strong>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Password"
+              value="https://halsell.com"
+            />
             <p>
-              <span class="material-icons-outlined">public</span> Anyone on the internet (including Google) can see this
-              board. Only board members can edit.
+              <span class="material-icons-outlined">public</span> Anyone on the
+              internet (including Google) can see this board. Only board members
+              can edit.
             </p>
           </label>
         </div>
@@ -59,13 +72,13 @@
 </template>
 
 <script>
-import aboutBoard from './about-board.vue';
-import changeBackground from './change-background.vue';
-import labelMenu from './label-menu.vue';
-import menuActivity from './menu-activity.vue';
+import aboutBoard from "./about-board.vue";
+import changeBackground from "./change-background.vue";
+import labelMenu from "./label-menu.vue";
+import menuActivity from "./menu-activity.vue";
 
 export default {
-  name: 'smart-cmp-menu',
+  name: "smart-cmp-menu",
   props: {
     isShow: { type: Boolean },
   },
@@ -83,7 +96,7 @@ export default {
       this.showCmp = cmp;
     },
     closeMenu() {
-      this.$emit('closeMenu');
+      this.$emit("closeMenu");
       this.showCmp = null;
     },
     changeBcg(newColor) {

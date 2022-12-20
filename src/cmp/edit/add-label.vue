@@ -2,12 +2,30 @@
   <section class="add-label" @click.stop>
     <header>
       <h2>{{ header }}</h2>
-      <a @click="closeModel" class="el-icon-close" v-show="!inMenu"> <el-icon><CloseBold /></el-icon></a>
+      <a @click="closeModel" class="el-icon-close" v-show="!inMenu">
+        <i class="bi bi-x"></i
+      ></a>
     </header>
-    <span class="backIcon material-icons-outlined" @click="backLabel" v-show="!inMenu"> chevron_left </span>
+    <span
+      class="backIcon material-icons-outlined"
+      @click="backLabel"
+      v-show="!inMenu"
+    >
+      chevron_left
+    </span>
     <h3 class="labels-name">Name</h3>
-    <input v-if="!label.editCurrLabel" class="search" type="text" v-model="newLabel.title" />
-    <input v-else class="search" type="text" v-model="label.editCurrLabel.title" />
+    <input
+      v-if="!label.editCurrLabel"
+      class="search"
+      type="text"
+      v-model="newLabel.title"
+    />
+    <input
+      v-else
+      class="search"
+      type="text"
+      v-model="label.editCurrLabel.title"
+    />
     <h3 class="labels-title">Select a color</h3>
     <ul>
       <li v-for="(color, idx) in colors" :key="idx" @click="chooseColor(color)">
@@ -18,7 +36,11 @@
             backgroundColor: color,
           }"
         >
-          <span class="material-icons-outlined" v-show="color === newLabel.color" @click="chooseColor(color)">
+          <span
+            class="material-icons-outlined"
+            v-show="color === newLabel.color"
+            @click="chooseColor(color)"
+          >
             check
           </span>
         </div>
@@ -29,7 +51,12 @@
             backgroundColor: color,
           }"
         >
-          <span class="material-icons-outlined" v-show="color === label.editCurrLabel.color"> check </span>
+          <span
+            class="material-icons-outlined"
+            v-show="color === label.editCurrLabel.color"
+          >
+            check
+          </span>
         </div>
         <!-- <span class="material-icons-outlined" v-show="color === newLabel.color"> check </span> -->
       </li>
@@ -40,14 +67,19 @@
     </ul>
     <div class="flex-space">
       <a class="add-label" @click="addLabel">Save</a>
-      <a v-if="label.type === 'edit' || type === 'edit'" class="delete-label" @click="deleteLabel">Delete</a>
+      <a
+        v-if="label.type === 'edit' || type === 'edit'"
+        class="delete-label"
+        @click="deleteLabel"
+        >Delete</a
+      >
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  name: 'add-label',
+  name: "add-label",
   props: {
     label: {
       type: Object,
@@ -67,19 +99,19 @@ export default {
   data() {
     return {
       colors: [
-        '#61bd4f',
-        '#f2d600',
-        '#ff9f1a',
-        '#eb5a46',
-        '#c377e0',
-        '#0079bf',
-        '#00c2e0',
-        '#51e898',
-        '#ff78cb',
-        '#344563',
-        '#b3bac5',
+        "#61bd4f",
+        "#f2d600",
+        "#ff9f1a",
+        "#eb5a46",
+        "#c377e0",
+        "#0079bf",
+        "#00c2e0",
+        "#51e898",
+        "#ff78cb",
+        "#344563",
+        "#b3bac5",
       ],
-      newLabel: { color: '#51e898', title: '' },
+      newLabel: { color: "#51e898", title: "" },
     };
   },
   created() {},
@@ -87,14 +119,14 @@ export default {
     addLabel() {
       if (this.label.editCurrLabel) {
         let labelToSave = JSON.parse(JSON.stringify(this.label.editCurrLabel));
-        this.$emit('newLabel', labelToSave);
+        this.$emit("newLabel", labelToSave);
       } else {
-        this.$emit('newLabel', this.newLabel);
+        this.$emit("newLabel", this.newLabel);
       }
     },
     deleteLabel(e) {
       if (this.label.editCurrLabel) {
-        this.$emit('deleteLabel', this.label.editCurrLabel, e);
+        this.$emit("deleteLabel", this.label.editCurrLabel, e);
       }
     },
     chooseColor(color) {
@@ -105,10 +137,10 @@ export default {
       }
     },
     backLabel(e) {
-      this.$emit('backLabel', 'labels', e);
+      this.$emit("backLabel", "labels", e);
     },
     closeModel() {
-      this.$emit('closeModel');
+      this.$emit("closeModel");
     },
   },
 };

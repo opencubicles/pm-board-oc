@@ -21,19 +21,19 @@
             src="https://res.cloudinary.com/trelix-casep21/image/upload/v1638632838/ezgif.com-gif-maker_1_hbqgql.gif"
             class="img-logo"
           />
-          <strong> Trelix</strong>
+          <strong>Halsell</strong>
         </div>
-        <ul>
+        <ul style="margin-top: 1rem">
           <li @click="openRecentBoards">
-            Recent <i class="el-icon-arrow-down pointer"></i>
+            Recent <i class="bi bi-chevron-down pointer"></i>
           </li>
           <li @click="openStarredBoards">
-            Starred <i class="el-icon-arrow-down pointer"></i>
+            Starred <i class="bi bi-chevron-down pointer"></i>
           </li>
           <li @click="openTemplatesBoards">
-            Templates <i class="el-icon-arrow-down pointer"></i>
+            Templates <i class="bi bi-chevron-down pointer"></i>
           </li>
-          <li @click="moveToBoards" :style="{ margin: '2px' }">Create</li>
+          <li @click="moveToBoards">Create</li>
         </ul>
       </div>
       <div class="search">
@@ -45,36 +45,47 @@
           <span class="material-icons-outlined"> notifications </span>
         </div>
         <div class="icon-header pointer pointer">
-          <!-- <avatar
+          <avatar
             @click.native="showProfile"
             v-if="createdBy.imgUrl"
             :src="createdBy.imgUrl"
             :size="35"
-            :username="createdBy.fullname"
+            :name="createdBy.fullname"
             class="member"
           ></avatar>
-          <avatar v-else :size="35" @click.native="showProfile" :username="createdBy.fullname" class="member"></avatar> -->
+          <avatar
+            :size="35"
+            @click.native="showProfile"
+            :name="createdBy.fullname"
+            class="member"
+          ></avatar>
         </div>
       </div>
     </nav>
     <div class="modal" v-if="isShowProfile">
       <div class="title">
-        <i
-          class="el-icon-close pointer"
-          @click="isShowProfile = !isShowProfile"
-        ><el-icon><CloseBold /></el-icon></i>
+        <i class="el-icon-close pointer" @click="isShowProfile = !isShowProfile"
+          ><i class="bi bi-x"></i
+        ></i>
         <i>Account</i>
       </div>
       <hr />
       <div class="avatar-user">
-        <!-- <avatar
+        <avatar
           v-if="createdBy.imgUrl"
           :src="createdBy.imgUrl"
+          name="test"
           :size="40"
-          :username="createdBy.fullname"
+          :name="createdBy.fullname"
           class="member"
         ></avatar>
-        <avatar v-else :size="40" :username="createdBy.fullname" class="member"></avatar> -->
+        <avatar
+          v-else
+          :size="40"
+          :name="createdBy.fullname"
+          name="test"
+          class="member"
+        ></avatar>
         <div class="user-details detraction">
           <div>
             <strong>{{ createdBy.fullname }}</strong>
@@ -90,7 +101,9 @@
 
     <div class="modal menu" v-if="isOpenMenu">
       <div class="title">
-        <i class="el-icon-close pointer" @click="openMenu"><el-icon><CloseBold /></el-icon></i>
+        <i class="el-icon-close pointer" @click="openMenu"
+          ><i class="bi bi-x"></i
+        ></i>
         <i>More from Atlassian</i>
       </div>
       <hr />
@@ -106,7 +119,9 @@
 
     <div class="modal menu" v-if="isRecent">
       <div class="title">
-        <i class="el-icon-close pointer" @click="openRecentBoards"><el-icon><CloseBold /></el-icon></i>
+        <i class="el-icon-close pointer" @click="openRecentBoards"
+          ><i class="bi bi-x"></i
+        ></i>
         <i>Recent boards</i>
       </div>
       <hr />
@@ -135,7 +150,9 @@
 
     <div class="modal menu" v-if="isStared">
       <div class="title">
-        <i class="el-icon-close pointer" @click="openStarredBoards"><el-icon><CloseBold /></el-icon></i>
+        <i class="el-icon-close pointer" @click="openStarredBoards"
+          ><i class="bi bi-x"></i
+        ></i>
         <i>Starred boards</i>
       </div>
       <hr />
@@ -165,7 +182,9 @@
 
     <div class="modal menu" v-if="isTemplate">
       <div class="title">
-        <i class="el-icon-close pointer" @click="openTemplatesBoards"><el-icon><CloseBold /></el-icon></i>
+        <i class="el-icon-close pointer" @click="openTemplatesBoards"
+          ><i class="bi bi-x"></i
+        ></i>
         <i>Templates</i>
       </div>
       <hr />
@@ -187,7 +206,7 @@
 
 <script>
 import { boardService } from "../service/board.service.js";
-import avatar from "vue-avatar";
+import avatar from "vue3-avatar";
 
 export default {
   name: "appHeader",

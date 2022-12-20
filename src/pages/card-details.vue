@@ -8,7 +8,7 @@
       >
         <span class="cover-back-btn" @click="closeDetails">
           <a class="back-btn close-btn el-icon-close"
-            ><el-icon><CloseBold /></el-icon>
+            ><i class="bi bi-x"></i>
           </a>
         </span>
         <a class="cover-btn" @click="dynamicCmp('cover', null, null, $event)">
@@ -21,16 +21,21 @@
       <header class="header">
         <a
           v-if="card.style && !card.style.bgColor && !card.style.bgUrl"
-          class="back-btn close-btn el-icon-close"
+          class="back-btn close-btn"
           @click="closeDetails"
         >
-          <el-icon><CloseBold /></el-icon>
+          <i class="bi bi-x"></i>
         </a>
-        <div class="secund-header">
-          <!-- <font-awesome-icon class="svg" :icon="['fab', 'trello']" /> -->
-          <span
-            class="icon-lg icon-lg icon icon-card js-card-header-icon"
-          ></span>
+        <div
+          class="secund-header"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+          "
+        >
+          <i class="bi bi-card-heading icon-lg icon"></i>
           <div class="secund-header-input" @click="toggleTitle">
             <input
               type="text"
@@ -53,8 +58,18 @@
               <h3>Members</h3>
               <ul class="member-container">
                 <li v-for="member in card.members" :key="member._id">
-                  <!-- <avatar v-if="member.imgUrl" :src="member.imgUrl" :size="35" class="member"></avatar>
-                  <avatar v-else :username="member.fullname" :size="35" class="member"></avatar> -->
+                  <avatar
+                    v-if="member.imgUrl"
+                    :src="member.imgUrl"
+                    :size="35"
+                    class="member"
+                  ></avatar>
+                  <avatar
+                    v-else
+                    :name="member.fullname"
+                    :size="35"
+                    class="member"
+                  ></avatar>
                 </li>
                 <a
                   class="plus-btn"
@@ -111,7 +126,7 @@
                   <span v-if="card.dueDate.isComplete" class="complete"
                     >complete</span
                   >
-                  <span class="el-icon-arrow-down"></span>
+                  <i class="bi bi-chevron-down"></i>
                 </a>
               </div>
             </div>
@@ -153,9 +168,7 @@
                 </el-input>
 
                 <div class="description-edit-btn">
-                  <a class="close-btn el-icon-close" @click="closeDescription">
-                    <el-icon><CloseBold /></el-icon
-                  ></a>
+                  <a class="close-btn bi bi-x" @click="closeDescription"> </a>
                   <a class="save" @click="saveDescription">Save</a>
                 </div>
               </div>
@@ -272,7 +285,7 @@
                       v-if="attCard.members && attCard.members.length > 0"
                     >
                       <div v-for="member in attCard.members" :key="member._id">
-                        <!-- <avatar
+                        <avatar
                           v-if="member.imgUrl"
                           :src="member.imgUrl"
                           :size="28"
@@ -280,10 +293,10 @@
                         />
                         <avatar
                           v-else
-                          :username="member.username"
+                          :name="member.username"
                           :size="28"
                           class="member"
-                        ></avatar> -->
+                        ></avatar>
                       </div>
                     </div>
                   </div>
@@ -499,7 +512,7 @@ import checkList from "../cmp/checklist-details.vue";
 import activityLog from "../cmp/activity-log.vue";
 import card from "../cmp/card.vue";
 
-import avatar from "vue-avatar";
+import avatar from "vue3-avatar";
 import moment from "moment";
 
 import { boardService } from "../service/board.service.js";

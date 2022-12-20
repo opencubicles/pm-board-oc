@@ -3,7 +3,9 @@
     <section class="edit-member" @click.stop>
       <header>
         <h3>Invite to board</h3>
-        <a @click="closeModel" class="el-icon-close pointer"><el-icon><CloseBold /></el-icon> </a>
+        <a @click="closeModel" class="el-icon-close pointer"
+          ><i class="bi bi-x"></i>
+        </a>
       </header>
 
       <!-- <input class="search" type="text" placeholder="Search members" v-model="filterMember" /> -->
@@ -15,8 +17,18 @@
           @click="updateMember(member)"
         >
           <div class="curr-user pointer">
-            <!-- <avatar v-if="member.imgUrl" :src="member.imgUrl" :size="32" class="avatar"></avatar>
-            <avatar v-else :username="member.fullname" class="avatar" :size="32"></avatar> -->
+            <avatar
+              v-if="member.imgUrl"
+              :src="member.imgUrl"
+              :size="32"
+              class="avatar"
+            ></avatar>
+            <avatar
+              v-else
+              :name="member.fullname"
+              class="avatar"
+              :size="32"
+            ></avatar>
 
             <span class="user">
               <span>{{ member.fullname }}</span>
@@ -35,7 +47,7 @@
 </template>
 
 <script>
-import avatar from "vue-avatar";
+import avatar from "vue3-avatar";
 export default {
   name: "boardMember",
   data() {

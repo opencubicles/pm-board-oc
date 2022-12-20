@@ -2,9 +2,13 @@
   <section class="edit-cover-search" @click.stop>
     <header>
       <h2>{{ header }}</h2>
-      <a @click="closeModel" class="el-icon-close"><el-icon><CloseBold /></el-icon> </a>
+      <a @click="closeModel" class="el-icon-close"><i class="bi bi-x"></i> </a>
     </header>
-    <input type="text" placeholder="Search Unsplash for photos" v-model="search" />
+    <input
+      type="text"
+      placeholder="Search Unsplash for photos"
+      v-model="search"
+    />
 
     <h4>Suggested searches</h4>
     <ul class="suggestedSearches">
@@ -28,10 +32,10 @@
 </template>
 
 <script>
-import { utilService } from '../../service/util.service.js';
-import { imgService } from '../../service/img.service.js';
+import { utilService } from "../../service/util.service.js";
+import { imgService } from "../../service/img.service.js";
 export default {
-  name: 'edit-cover-search',
+  name: "edit-cover-search",
   props: {
     header: {
       type: String,
@@ -41,17 +45,17 @@ export default {
   data() {
     return {
       suggested: [
-        'Productivity',
-        'Perspective',
-        'Organization',
-        'Colorful',
-        'Nature',
-        'Business',
-        'Minimal',
-        'Space',
-        'Animals',
+        "Productivity",
+        "Perspective",
+        "Organization",
+        "Colorful",
+        "Nature",
+        "Business",
+        "Minimal",
+        "Space",
+        "Animals",
       ],
-      search: 'Wallpapers',
+      search: "Wallpapers",
       imgs: [],
     };
   },
@@ -61,14 +65,14 @@ export default {
   },
   methods: {
     changeBgc(newBcg) {
-      this.$emit('changeBcg', newBcg);
+      this.$emit("changeBcg", newBcg);
     },
     async searchBy() {
       this.imgs = await imgService.getImgs(this.search);
       // this.imgs = imgs.splice(0, 6);
     },
     closeModel() {
-      this.$emit('closeModel');
+      this.$emit("closeModel");
     },
   },
 };

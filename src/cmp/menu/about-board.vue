@@ -1,4 +1,4 @@
-<template >
+<template>
   <section class="cmp-about">
     <div class="menu-header about-header">
       <h3 class="back-menu pointer material-icons-outlined back" @click="back">
@@ -12,18 +12,18 @@
     <hr />
     <h2 class="about"><span> Board admins </span></h2>
     <div class="about-name">
-      <!-- <avatar
-         v-if="board.createdBy.imgUrl"
-            class="avatar"
-            :size="50"
-            :src="`${board.createdBy.imgUrl}`"
-         ></avatar>
-         <avatar
-         v-else
-            class="avatar"
-            :size="50"
-            :username="`${board.createdBy.fullname}`"
-         ></avatar> -->
+      <avatar
+        v-if="board.createdBy.imgUrl"
+        class="avatar"
+        :size="50"
+        :src="`${board.createdBy.imgUrl}`"
+      ></avatar>
+      <avatar
+        v-else
+        class="avatar"
+        :size="50"
+        :name="`${board.createdBy.fullname}`"
+      ></avatar>
       <div class="details">
         <h2>{{ board.createdBy.fullname }}</h2>
         <h3>{{ board.createdBy.email }}</h3>
@@ -52,7 +52,9 @@
           >
           </el-input>
           <div class="description-edit-btn">
-            <a class="close-btn el-icon-close" @click="closeDescription"><el-icon><CloseBold /></el-icon></a>
+            <a class="close-btn el-icon-close" @click="closeDescription"
+              ><i class="bi bi-x"></i
+            ></a>
             <a class="save" @click="saveDescription">Save</a>
           </div>
         </div>
@@ -62,7 +64,7 @@
 </template>
 
 <script>
-import Avatar from "vue-avatar";
+import Avatar from "vue3-avatar";
 import { boardService } from "../../service/board.service.js";
 export default {
   props: {
@@ -103,5 +105,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

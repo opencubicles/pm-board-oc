@@ -18,7 +18,7 @@
     ></div>
 
     <span
-      class="icon-edit edit pointer"
+      class="bi bi-pencil edit pointer"
       @click.stop="openDetails(false)"
       :style="isShow"
     >
@@ -92,16 +92,15 @@
               @click.stop="isDone"
               :class="{ 'done-card': card.dueDate.isComplete }"
             >
-              <span
+              <i
                 v-if="card.dueDate.isComplete && showCheck"
-                class="icon-checkbox-unchecked icon"
-              >
-              </span>
+                class="bi bi-square"
+              ></i>
               <span
                 v-if="showCheck && !card.dueDate.isComplete"
                 class="icon-checklist icon check"
               ></span>
-              <span v-if="!showCheck" class="icon icon-clock check"></span>
+              <span v-if="!showCheck" class="icon bi bi-clock"></span>
               <span v-if="card.dueDate.date.date">
                 {{ formatDate(card.dueDate.date.date, "MMM DD") }}
               </span>
@@ -130,7 +129,7 @@
               v-if="card.checklists && card.checklists.length > 0"
               :class="{ 'done-todos': isTodosDone }"
             >
-              <span class="icon-checklist icon"> </span>
+              <span class="bi bi-check2-square icon"> </span>
               <span>{{ doneTodosAmount }}</span>
               <span>/</span>
               <span>{{ todosAmount }}</span>
@@ -155,8 +154,18 @@
               :key="member._id"
               @click.stop="showProfile(member)"
             >
-              <!-- <avatar v-if="member.imgUrl" :src="member.imgUrl" :size="28" class="member-img" />
-              <avatar v-else :username="member.username" :size="28" class="member"></avatar> -->
+              <avatar
+                v-if="member.imgUrl"
+                :src="member.imgUrl"
+                :size="28"
+                class="member-img"
+              />
+              <avatar
+                v-else
+                :name="member.username"
+                :size="28"
+                class="member"
+              ></avatar>
             </div>
           </div>
         </div>
@@ -164,26 +173,24 @@
     </section>
     <div class="modal" v-if="isShowProfile">
       <div class="title">
-        <i class="el-icon-close pointer" @click="isShowProfile = !isShowProfile"
-          ><el-icon><CloseBold /></el-icon
-        ></i>
+        <i class="bi bi-x pointer" @click="isShowProfile = !isShowProfile"></i>
       </div>
 
       <div class="user-details">
         <div>
-          <!-- <avatar
+          <avatar
             v-if="currMember.imgUrl"
             :src="currMember.imgUrl"
             :size="50"
-            username="currMember.username"
+            :name="currMember.username"
             class="member"
           ></avatar>
           <avatar
             v-else
             :size="50"
-            username="currMember.username"
+            :name="currMember.username"
             class="member"
-          ></avatar> -->
+          ></avatar>
         </div>
         <div class="name">
           <strong>{{ currMember.fullname }}</strong>
@@ -203,7 +210,7 @@
 <script>
 import { boardService } from "../service/board.service";
 import moment from "moment";
-import avatar from "vue-avatar";
+import avatar from "vue3-avatar";
 
 export default {
   name: "card",

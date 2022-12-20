@@ -15,10 +15,12 @@
         </li>
 
         <li
-          class="el-icon-star-off pointer star"
+          class="pointer star"
           @click="changeFavorite"
           :class="{ 'star-on': isStarOn, 'star-false': !isStarOn }"
-        ></li>
+        >
+          <i class="bi bi-star"></i>
+        </li>
 
         <span class="divider"></span>
         <div class="icon-user pointer">
@@ -28,14 +30,19 @@
             class="avatar-logo"
             @click="showProfile(member)"
           >
-            <!-- <avatar
+            <avatar
               v-if="member.imgUrl"
               :src="member.imgUrl"
               :size="35"
-              :username="member.fullname"
+              :name="member.fullname"
               class="member icon-member"
             ></avatar>
-            <avatar v-else :size="35" :username="member.fullname" class="member icon-member"></avatar> -->
+            <avatar
+              v-else
+              :size="35"
+              :name="member.fullname"
+              class="member icon-member"
+            ></avatar>
           </li>
         </div>
         <li class="icon pointer" @click="toggleInvite">
@@ -50,24 +57,25 @@
           <i
             class="el-icon-close pointer"
             @click="isShowProfile = !isShowProfile"
-          ><el-icon><CloseBold /></el-icon></i>
+            ><i class="bi bi-x"></i
+          ></i>
         </div>
 
         <div class="user-details">
           <div>
-            <!-- <avatar
+            <avatar
               v-if="currMember.imgUrl"
               :src="currMember.imgUrl"
               :size="50"
-              username="currMember.username"
+              :name="currMember.username"
               class="member"
             ></avatar>
             <avatar
               v-else
               :size="50"
-              username="currMember.username"
+              :name="currMember.username"
               class="member"
-            ></avatar> -->
+            ></avatar>
           </div>
           <div class="name">
             <strong>{{ currMember.fullname }}</strong>
@@ -94,7 +102,7 @@
 </template>
 
 <script>
-import avatar from "vue-avatar";
+import avatar from "vue3-avatar";
 import navMenu from "./menu/nav-menu.vue";
 import boardMember from "./board-member.vue";
 

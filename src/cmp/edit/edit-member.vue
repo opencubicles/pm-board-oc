@@ -2,7 +2,7 @@
   <section class="edit-member" @click.stop>
     <header>
       <h2 v-if="header">{{ header }}</h2>
-      <a @click="closeModel" class="el-icon-close"><el-icon><CloseBold /></el-icon> </a>
+      <a @click="closeModel" class="el-icon-close"><i class="bi bi-x"></i> </a>
     </header>
 
     <input
@@ -19,8 +19,18 @@
         @click="updateMember(member)"
       >
         <div class="curr-user">
-          <!-- <avatar v-if="member.imgUrl" :src="member.imgUrl" :size="32" class="avatar"></avatar>
-          <avatar v-else :username="member.fullname" class="avatar" :size="32"></avatar> -->
+          <avatar
+            v-if="member.imgUrl"
+            :src="member.imgUrl"
+            :size="32"
+            class="avatar"
+          ></avatar>
+          <avatar
+            v-else
+            :name="member.fullname"
+            class="avatar"
+            :size="32"
+          ></avatar>
 
           <span class="user">
             <span>{{ member.fullname }}</span>
@@ -35,7 +45,7 @@
 </template>
 
 <script>
-import avatar from "vue-avatar";
+import avatar from "vue3-avatar";
 export default {
   name: "editMember",
   props: {

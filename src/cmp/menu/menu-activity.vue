@@ -14,16 +14,16 @@
         <li class="activity-card">
           <div class="headerMsg">
             <div>
-              <!-- <avatar
-                     v-if="activity.byMember &&activity.byMember.imgUrl"
-                        :size="32"
-                        :src="`${activity.byMember.imgUrl}`"
-                     ></avatar>
-                      <avatar
-                     v-else
-                        :size="32"
-                        :username="`${activity.byMember.fullname}`"
-                     ></avatar> -->
+              <avatar
+                v-if="activity.byMember && activity.byMember.imgUrl"
+                :size="32"
+                :src="`${activity.byMember.imgUrl}`"
+              ></avatar>
+              <avatar
+                v-else
+                :size="32"
+                :name="`${activity.byMember.fullname}`"
+              ></avatar>
             </div>
             <h2 class="name">
               {{ activity.byMember.fullname }}
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import Avatar from "vue-avatar";
+import Avatar from "vue3-avatar";
 import moment from "moment";
 
 export default {
@@ -54,5 +54,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

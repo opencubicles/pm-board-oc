@@ -21,14 +21,16 @@
       </label>
 
       <label v-if="isAddGroup">
-        <el-input
+        <input
+          class="form-control"
           placeholder="Enter list title..."
           v-model="newGroup.title"
-        ></el-input>
-
+        />
         <el-button type="primary" @click="addGroup"> Add list</el-button>
         <!-- <font-awesome-icon icon="times" @click="toggleGroup" /> -->
-        <i class="el-icon-close" @click="toggleGroup"><el-icon><CloseBold /></el-icon></i>
+        <i class="el-icon-close" @click="toggleGroup"
+          ><i class="bi bi-x"></i
+        ></i>
       </label>
     </div>
   </section>

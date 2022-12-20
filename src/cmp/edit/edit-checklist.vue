@@ -2,7 +2,9 @@
   <section class="edit-checklist">
     <header>
       <h2>{{ header }}</h2>
-      <a @click="closeModel" class="el-icon-close"><el-icon><CloseBold /></el-icon> </a>
+      <a @click="closeModel">
+        <i class="bi bi-x"></i>
+      </a>
     </header>
 
     <h4 class="title">Title</h4>
@@ -17,15 +19,14 @@
       <option>C</option>
     </select>
     <a class="add-btn" @click="saveChecklist">Add</a>
-    <a style="margin-left: 5px; cursor: pointer;" @click="closeModel">Cancel</a>
   </section>
 </template>
 
 <script>
-import { boardService } from '../../service/board.service.js';
+import { boardService } from "../../service/board.service.js";
 
 export default {
-  name: 'edit-checklist',
+  name: "edit-checklist",
   props: {
     card: {
       type: Object,
@@ -45,11 +46,11 @@ export default {
   },
   methods: {
     saveChecklist() {
-      this.$emit('addChecklist', this.newChecklist);
+      this.$emit("addChecklist", this.newChecklist);
       this.newChecklist = boardService.getEmptyChecklist();
     },
     closeModel() {
-      this.$emit('closeModel');
+      this.$emit("closeModel");
     },
   },
   computed: {},

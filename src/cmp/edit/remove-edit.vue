@@ -2,7 +2,7 @@
   <section class="remove-edit-details-attachment">
     <header>
       <h2>{{ title }}</h2>
-      <a @click="closeModel" class="el-icon-close"> <el-icon><CloseBold /></el-icon></a>
+      <a @click="closeModel" class="el-icon-close"> <i class="bi bi-x"></i></a>
     </header>
     <p>{{ cmp.txt }}</p>
     <a class="remove" @click="remove">{{ cmp.btnTxt }}</a>
@@ -25,10 +25,10 @@ export default {
   },
   methods: {
     remove() {
-      this.$emit('cmpRemove');
+      this.$emit("cmpRemove");
     },
     closeModel() {
-      this.$emit('closeModel');
+      this.$emit("closeModel");
     },
   },
 };
